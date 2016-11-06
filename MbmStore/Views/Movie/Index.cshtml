@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>@ViewBag.JungleBook.Title</h2>
+<p>Director: ViewBag.JungleBook.Director<br>
+Price: @String.Format("{0:0.00}", ViewBag.JungleBook.Price)</p>
+<p><img src="content/images/@ViewBag.JungleBook.ImageUrl" alt="@ViewBag.JungleBook.Title" /></p>
+
+<h2>@ViewBag.Gladiator.Title</h2>
+<p>Director: ViewBag.Gladiator.Director<br>
+Price: @String.Format("{0:0.00}", ViewBag.Gladiator.Price)</p>
+<p><img src="content/images/@ViewBag.Gladiator.ImageUrl" alt="@ViewBag.Gladiator.Title" /></p>
+
+<h2>@ViewBag.ForrestGump.Title</h2>
+<p>Director: ViewBag.ForrestGump.Director<br>
+Price: @String.Format("{0:0.00}", ViewBag.ForrestGump.Price)</p>
+<p><img src="content/images/@ViewBag.ForrestGump.ImageUrl" alt="@ViewBag.ForrestGump.Title" /></p>

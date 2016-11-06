@@ -1,0 +1,38 @@
+﻿@using MbmStore.Models;
+@{
+    ViewBag.Title = "Index";
+
+}
+
+<h2>Invoices</h2>
+@using (Html.BeginForm()) {
+    @Html.DropDownList("CustomerId", "Select customer")
+    <button type="submit">Show invoices</button>
+}
+
+<br /> <br />
+<table><tr>
+    <th>Customer</th>
+    <th>
+        <div style="float:left;width:80%;">Product</div>
+        <div style="float:right;width:50px;">Price</div>
+    </th>
+    </tr>
+    @foreach (Invoice invoice in ViewBag.Invoices) {
+        <tr><td width="150">@invoice.Customer.Firstname @invoice.Customer.Lastname (@invoice.OrderDate.ToShortDateString())</td><td>
+            <table>
+                @{decimal price = 0M;}
+                @foreach (OrderItem orderItem in invoice.OrderItems)
+                {
+                    <tr>
+                        <td width="500">@orderItem.Product.Title (@orderItem.Product.ToString().Substring(15)) </td>
+                        <td style="width:50px" class="price">@orderItem.Product.Price</td>
+                    </tr>
+                    price += orderItem.Product.Price;
+                }
+                <tr><td><strong>Total</strong></td><td class="price"><strong>@price</strong></td></tr>
+            </table>
+        </td></tr>
+    }
+    </table>
+

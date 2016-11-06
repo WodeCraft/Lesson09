@@ -1,0 +1,46 @@
+﻿@using MbmStore.Models;
+@model MbmStore.ViewModels.ProductsListViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm("Index", "Cart"))
+{
+    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+    <input type="submit" class="btn btn-success" value="View Cart" />
+}
+
+@if(Model.Products.OfType<Book>().Count() > 0) { 
+    <h2>The Books</h2>
+    foreach (Book book in Model.Products.OfType<Book>().ToList())
+    {
+        @Html.Partial("ProductSummaryBook", book);
+        <br />
+    }
+}
+
+
+@if (Model.Products.OfType<MusicCD>().Count() > 0)
+{
+    <h2>The Music CDs</h2>
+    foreach (MusicCD musicCD in Model.Products.OfType<MusicCD>().ToList())
+    {
+        @Html.Partial("ProductSummaryMusicCd", musicCD);
+        <br />
+    }
+}
+
+@if (Model.Products.OfType<Movie>().Count() > 0)
+{
+    <h2>The Movies</h2>
+    foreach (Movie movie in Model.Products.OfType<Movie>().ToList())
+    {
+        @Html.Partial("ProductSummaryMovie", movie);
+        <br />   
+    }
+}
+
+<div>
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x, category = Model.CurrentCategory }))
+</div>
+

@@ -1,0 +1,45 @@
+﻿@using MbmStore.Models;
+@model MbmStore.Models.MusicCD
+
+<div class="row">
+    <div class="col-md-2">
+        <img src="/Content/Images/@Model.ImageUrl" alt="@Model.Title" style="width:100px" />
+    </div>
+    <div class="col-md-4">
+
+        <strong>Album:</strong> @Model.Title<br />
+        <strong>Artist:</strong> @Model.Artist<br />
+        <strong>Price:</strong> @Model.Price<br />
+        <strong>Publisher:</strong> @Model.Label (@Model.Released)<br /> <br />
+
+    </div>
+
+    <div class="col-md-6" style="vertical-align:bottom">
+
+        @using (Html.BeginForm("AddToCart", "Cart"))
+            {
+            @Html.Hidden("ProductId", Model.ProductId)
+            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+            <input type="submit" class="btn btn-success" value="Add to cart" />
+        }
+    </div>
+
+    <div class="col-md-11">
+        <strong>Tracks:</strong>
+        <ul style="list-style:decimal; list-style-position:inside;">
+            @foreach (Track track in Model.Tracks)
+            {
+                <li>@track.Title (@track.Composer) @track.Length.Minutes:@track.Length.Seconds.ToString("00")</li>
+            }
+        </ul>
+        @if (Model.GetPlayingTime().Hours > 0)
+        {
+            <strong>Total playing time:</strong> @Model.GetPlayingTime().ToString(@"hh\:mm\:ss")
+        }
+        else
+        {
+            <strong>Total playing time:</strong> @Model.GetPlayingTime().ToString(@"mm\:ss");
+        }
+    </div>
+
+</div>
