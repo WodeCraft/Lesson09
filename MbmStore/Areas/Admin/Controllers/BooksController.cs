@@ -1,9 +1,6 @@
 ﻿using MbmStore.DAL;
 using MbmStore.Models;
-using System;
 using System.Data;
-using System.Data.Entity;
-using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 
@@ -11,12 +8,12 @@ namespace MbmStore.Areas.Admin.Controllers
 {
     public class BooksController : Controller
     {
-        private MbmStoreContext db = new MbmStoreContext();
+        private IBookRepository repo = new EFBookRepository();
 
         // GET: Admin/Books
         public ActionResult Index()
         {
-            return View(db.Books.ToList());
+            return View(repo.GetBookList());
         }
 
         // GET: Admin/Books/Details/5
@@ -26,7 +23,7 @@ namespace MbmStore.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Book book = db.Books.Find(id);
+            Book book = repo.GetBookById((int)id);
             if (book == null)
             {
                 return HttpNotFound();
@@ -51,9 +48,7 @@ namespace MbmStore.Areas.Admin.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    book.CreatedDate = DateTime.Now;
-                    db.Books.Add(book);
-                    db.SaveChanges();
+                    repo.SaveBook(book);
                     return RedirectToAction("Index");
                 }
             }
@@ -73,7 +68,7 @@ namespace MbmStore.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Book book = db.Books.Find(id);
+            Book book = repo.GetBookById((int)id);
             if (book == null)
             {
                 return HttpNotFound();
@@ -92,9 +87,7 @@ namespace MbmStore.Areas.Admin.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    db.Entry(book).State = EntityState.Modified;
-                    db.Entry(book).Property(c => c.CreatedDate).IsModified = false;
-                    db.SaveChanges();
+                    repo.SaveBook(book);
                     return RedirectToAction("Index");
                 }
             }
@@ -120,7 +113,7 @@ namespace MbmStore.Areas.Admin.Controllers
                 ViewBag.ErrorMessage = "Delete failed. Try again, and if the problem persists see your administrator.";
             }
 
-            Book book = db.Books.Find(id);
+            Book book = repo.GetBookById((int)id);
             if (book == null)
             {
                 return HttpNotFound();
@@ -135,9 +128,7 @@ namespace MbmStore.Areas.Admin.Controllers
         {
             try
             {
-                Book book = db.Books.Find(id);
-                db.Books.Remove(book);
-                db.SaveChanges();
+                Book book = repo.DeleteBook(id);
             }
             catch (DataException /* dex */ )
             {
@@ -148,13 +139,5 @@ namespace MbmStore.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }
