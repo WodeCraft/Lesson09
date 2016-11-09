@@ -31,8 +31,18 @@ namespace MbmStore.Models
             }
         }
 
-        public Customer Customer { get; set; }
-        public List<OrderItem> OrderItems { get { return orderItems; } set { orderItems = value; } }
+        public virtual Customer Customer { get; set; }
+        public List<OrderItem> OrderItems
+        {
+            get
+            {
+                return orderItems;
+            }
+            set
+            {
+                orderItems = value;
+            }
+        }
 
         public Invoice() { }
 

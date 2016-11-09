@@ -98,7 +98,7 @@ namespace MbmStore.Controllers
                     db.Entry(customer).State = EntityState.Modified;
                 }
 
-                int nextInvoiceId = db.Invoices.OrderByDescending(i => i.InvoiceId).First().InvoiceId + 1;
+                int nextInvoiceId = db.Invoices.Max(i => i.InvoiceId) + 1;
 
                 Invoice invoice = new Invoice(nextInvoiceId, DateTime.Now, customer);
 
