@@ -163,6 +163,10 @@
     <Compile Include="Migrations\201611090850415_InitialMigration.Designer.cs">
       <DependentUpon>201611090850415_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611090929448_ProductCreatedDateAttribute.cs" />
+    <Compile Include="Migrations\201611090929448_ProductCreatedDateAttribute.Designer.cs">
+      <DependentUpon>201611090929448_ProductCreatedDateAttribute.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Phone.cs" />
     <Compile Include="Models\ShippingDetails.cs" />
@@ -215,6 +219,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201611090850415_InitialMigration.resx">
       <DependentUpon>201611090850415_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611090929448_ProductCreatedDateAttribute.resx">
+      <DependentUpon>201611090929448_ProductCreatedDateAttribute.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
