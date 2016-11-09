@@ -9,7 +9,7 @@ namespace MbmStore.Models
 
         public int ProductId { get; set; }
 
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
 
         public int Quantity { get; set; }
         public decimal TotalPrice { get { return Quantity * Product.Price; } }
@@ -17,16 +17,15 @@ namespace MbmStore.Models
         public OrderItem(Product product, int quantity)
         {
             Product = product;
+            ProductId = product.ProductId;
             Quantity = quantity;
         }
 
         public OrderItem() { }
 
-        public OrderItem(int orderItemID, Product product, int quantity)
+        public OrderItem(int orderItemID, Product product, int quantity) : this(product, quantity)
         {
             OrderItemId = orderItemID;
-            Product = product;
-            Quantity = quantity;
         }
 
 
