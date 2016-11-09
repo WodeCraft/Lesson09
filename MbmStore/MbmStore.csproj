@@ -173,6 +173,10 @@
     <Compile Include="Migrations\201611091106388_Small model changes.Designer.cs">
       <DependentUpon>201611091106388_Small model changes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611091126511_InvoiceRemovedAnnotationOrderDate.cs" />
+    <Compile Include="Migrations\201611091126511_InvoiceRemovedAnnotationOrderDate.Designer.cs">
+      <DependentUpon>201611091126511_InvoiceRemovedAnnotationOrderDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Phone.cs" />
     <Compile Include="Models\ShippingDetails.cs" />
@@ -231,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611091106388_Small model changes.resx">
       <DependentUpon>201611091106388_Small model changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611091126511_InvoiceRemovedAnnotationOrderDate.resx">
+      <DependentUpon>201611091126511_InvoiceRemovedAnnotationOrderDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

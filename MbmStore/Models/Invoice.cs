@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 namespace MbmStore.Models
@@ -15,7 +14,6 @@ namespace MbmStore.Models
 
         public int InvoiceId { get; set; }
 
-        [Column(TypeName = "datetime2")]
         public DateTime OrderDate { get; set; }
         public decimal TotalPrice
         {

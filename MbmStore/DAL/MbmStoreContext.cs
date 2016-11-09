@@ -26,6 +26,9 @@ namespace MbmStore.DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            //Configure Invoice Column
+            modelBuilder.Entity<Invoice>().Property(p => p.OrderDate).HasColumnType("datetime2");
         }
     }
 }
