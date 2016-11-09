@@ -1,6 +1,7 @@
 ﻿using MbmStore.Models;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Diagnostics;
 
 namespace MbmStore.DAL
 {
@@ -18,6 +19,7 @@ namespace MbmStore.DAL
 
         public MbmStoreContext() : base("MbmStoreContext")
         {
+            Database.Log = sql => Debug.Write(sql);
             //Database.SetInitializer(new MbmStoreInitializer());
         }
 

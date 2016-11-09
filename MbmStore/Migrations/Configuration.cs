@@ -29,7 +29,7 @@ namespace MbmStore.Migrations
 
             // Products 
             var products = new List<Product> {
-                new Book {ProductId=1, Title="A Hard Day's Write: The Stories Behind Every Beatles Song ", Author="Steve Turner", Price=150.00M, Publisher="It Books", Published=2005, ISBN="978-0060844097", ImageUrl="A_Hard_Days_Write.jpg", Category="Book"},
+                new Book {ProductId=1, Title="A Hard Day's Write: The Stories Behind Every Beatles Song ", Author="Steve Turner", Price=150.00M, Publisher="It Books", Published=2005, ISBN="978-0060844097", ImageUrl="A_Hard_Days_Write.jpg", Category="Book" },
                 new Book { ProductId = 2, Title = "With a Little Help from My Friends: The Making of Sgt. Pepper", Author = "Georg Martin", Price = 180.00M, Publisher = "Little Brown & Co", Published = 1995, ISBN = "0316547832", ImageUrl = "The Making of Sgt. Pepper.jpg", Category = "Book" },
                 new MusicCD { ProductId = 3, Title = "Abbey Road (Remastered)", Artist = "Beatles", Price = 128.00M, Released = 2009, Label = "EMI", ImageUrl = "abbey_road.jpg", Category = "Music",
                     Tracks = new List<Track> {

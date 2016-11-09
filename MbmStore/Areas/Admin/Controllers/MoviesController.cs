@@ -1,5 +1,6 @@
 ﻿using MbmStore.DAL;
 using MbmStore.Models;
+using System;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
@@ -50,6 +51,7 @@ namespace MbmStore.Areas.Admin.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    movie.CreatedDate = DateTime.Now;
                     db.Movies.Add(movie);
                     db.SaveChanges();
                     return RedirectToAction("Index");
@@ -91,6 +93,7 @@ namespace MbmStore.Areas.Admin.Controllers
                 if (ModelState.IsValid)
                 {
                     db.Entry(movie).State = EntityState.Modified;
+                    db.Entry(movie).Property(c => c.CreatedDate).IsModified = false;
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
