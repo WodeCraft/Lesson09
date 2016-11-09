@@ -159,6 +159,11 @@
     <Compile Include="HtmlHelpers\ListTracksHelpers.cs" />
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
     <Compile Include="Infrastructure\Binders\CartModelBinder.cs" />
+    <Compile Include="Migrations\201611090850415_InitialMigration.cs" />
+    <Compile Include="Migrations\201611090850415_InitialMigration.Designer.cs">
+      <DependentUpon>201611090850415_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Phone.cs" />
     <Compile Include="Models\ShippingDetails.cs" />
     <Compile Include="ViewModels\Cart.cs" />
@@ -206,6 +211,11 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Content\Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611090850415_InitialMigration.resx">
+      <DependentUpon>201611090850415_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

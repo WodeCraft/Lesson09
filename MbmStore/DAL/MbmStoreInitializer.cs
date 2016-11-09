@@ -5,7 +5,7 @@ using System.Data.Entity;
 
 namespace MbmStore.DAL
 {
-    public class MbmStoreInitializer : DropCreateDatabaseAlways<MbmStoreContext>
+    public class MbmStoreInitializer : CreateDatabaseIfNotExists<MbmStoreContext>
     {
         protected override void Seed(MbmStoreContext context)
         {
