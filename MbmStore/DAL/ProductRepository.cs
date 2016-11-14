@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using MbmStore.Models;
+using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
 namespace MbmStore.DAL
 {
-    public class ProductRepository<TEntity> where TEntity : class
+    public class ProductRepository<TEntity> where TEntity : Product
     {
         MbmStoreContext context = new MbmStoreContext();
         DbSet<TEntity> dbSet;
@@ -31,19 +33,18 @@ namespace MbmStore.DAL
         /// <param name="product"></param>
         public void SaveProduct(TEntity product)
         {
-            //if (product.ProductId == 0)
-            //{
-            //    product.CreatedDate = DateTime.Now;
-            //    dbSet.Add(product);
-            //    context.SaveChanges();
-            //}
-            //else
-            //{
-            //    // How to do this?
-            //    db.Entry(product).State = EntityState.Modified;
-            //    db.Entry(product).Property(b => b.CreatedDate).IsModified = false;
-            //    context.SaveChanges();
-            //}
+            if (product.ProductId == 0)
+            {
+                product.CreatedDate = DateTime.Now;
+                dbSet.Add(product);
+                context.SaveChanges();
+            }
+            else
+            {
+                context.Entry(product).State = EntityState.Modified;
+                context.Entry(product).Property(b => b.CreatedDate).IsModified = false;
+                context.SaveChanges();
+            }
         }
 
         public TEntity DeleteProduct(int id)
