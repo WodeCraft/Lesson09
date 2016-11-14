@@ -157,6 +157,7 @@
     <Compile Include="DAL\IBookRepository.cs" />
     <Compile Include="DAL\IMovieRepository.cs" />
     <Compile Include="DAL\IMusicCDRepository.cs" />
+    <Compile Include="DAL\IProductRepository.cs" />
     <Compile Include="DAL\MbmStoreContext.cs" />
     <Compile Include="DAL\MbmStoreInitializer.cs" />
     <Compile Include="DAL\ProductRepository.cs" />
