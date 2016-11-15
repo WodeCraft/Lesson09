@@ -185,6 +185,10 @@
     <Compile Include="Migrations\201611091126511_InvoiceRemovedAnnotationOrderDate.Designer.cs">
       <DependentUpon>201611091126511_InvoiceRemovedAnnotationOrderDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611151800114_CartLine_And_OrderItem_Price_Properties.cs" />
+    <Compile Include="Migrations\201611151800114_CartLine_And_OrderItem_Price_Properties.Designer.cs">
+      <DependentUpon>201611151800114_CartLine_And_OrderItem_Price_Properties.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Phone.cs" />
     <Compile Include="Models\ShippingDetails.cs" />
@@ -246,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611091126511_InvoiceRemovedAnnotationOrderDate.resx">
       <DependentUpon>201611091126511_InvoiceRemovedAnnotationOrderDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611151800114_CartLine_And_OrderItem_Price_Properties.resx">
+      <DependentUpon>201611151800114_CartLine_And_OrderItem_Price_Properties.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

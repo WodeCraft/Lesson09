@@ -27,7 +27,7 @@ namespace MbmStore.Models
                 return totalPrice;
 
                 // with linq
-                //return orderItems.Sum(e => e.Product.Price * e.Quantity);
+                //return orderItems.Sum(e => e.Price * e.Quantity);
             }
         }
 

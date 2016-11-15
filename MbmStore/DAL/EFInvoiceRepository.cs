@@ -48,7 +48,8 @@ namespace MbmStore.DAL
             foreach (CartLine line in cart.Lines)
             {
                 OrderItem orderItem = new OrderItem(line.Product, line.Quantity);
-                //orderItem.ProductId = line.Product.ProductId;
+                orderItem.Price = line.Price;
+                orderItem.ProductId = line.Product.ProductId;
                 orderItem.Product = null;
                 invoice.OrderItems.Add(orderItem);
             }

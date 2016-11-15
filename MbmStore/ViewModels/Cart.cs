@@ -1,8 +1,6 @@
-﻿ using MbmStore.Models;
-using System;
+﻿using MbmStore.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace MbmStore.ViewModels
 {
@@ -28,7 +26,7 @@ namespace MbmStore.ViewModels
 
             if (item == null)
             {
-                lines.Add(new CartLine { Product = product, Quantity = quantity });
+                lines.Add(new CartLine { Product = product, Quantity = quantity, Price = product.Price });
             }
             else
             {
@@ -51,5 +49,6 @@ namespace MbmStore.ViewModels
     {
         public Product Product { get; set; }
         public int Quantity { get; set; }
+        public decimal Price { get; set; }
     }
 }

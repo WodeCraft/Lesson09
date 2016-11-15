@@ -18,8 +18,7 @@ namespace MbmStore.Controllers
         // GET: Invoice
         public ActionResult Index()
         {
-            ViewBag.Invoices = db.Invoices;
-
+            ViewBag.Invoices = db.Invoices.Include("OrderItems");
 
             // generete dropdown list
             List<SelectListItem> customers = new List<SelectListItem>();
@@ -51,12 +50,16 @@ namespace MbmStore.Controllers
 
             ViewBag.CustomerID = customers;
 
-            IEnumerable<Invoice> invoices = db.Invoices;
+            IEnumerable<Invoice> invoices;
 
             if (CustomerId != null)
             {
                 // select invoices for a customer with linq
-                invoices = db.Invoices.Where(r => r.Customer.CustomerId == CustomerId);
+                invoices = db.Invoices.Include("OrderItems").Where(r => r.Customer.CustomerId == CustomerId);
+            }
+            else
+            {
+                invoices = db.Invoices.Include("OrderItems");
             }
             ViewBag.Invoices = invoices;
 
