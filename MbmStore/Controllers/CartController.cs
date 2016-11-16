@@ -8,13 +8,13 @@ namespace MbmStore.Controllers
 {
     public class CartController : Controller
     {
-        private IInvoiceRepository repo = new EFInvoiceRepository();
+        private InvoiceRepository<Invoice> repo = new InvoiceRepository<Invoice>();
 
         // constructor
         // instantiale a new repository object
         public CartController()
         {
-            repo = new EFInvoiceRepository();
+            repo = new InvoiceRepository<Invoice>();
         }
 
 

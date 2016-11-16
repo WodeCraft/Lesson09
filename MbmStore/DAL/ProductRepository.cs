@@ -6,32 +6,32 @@ using System.Linq;
 
 namespace MbmStore.DAL
 {
-    public class ProductRepository<TEntity> where TEntity : Product
+    public class ProductRepository<T> : IRepository<T> where T : Product
     {
         MbmStoreContext context = new MbmStoreContext();
-        DbSet<TEntity> dbSet;
+        DbSet<T> dbSet;
 
         public ProductRepository()
         {
-            dbSet = context.Set<TEntity>();
+            dbSet = context.Set<T>();
         }
 
-        public IEnumerable<TEntity> GetList()
+        public IEnumerable<T> GetList()
         {
-            IQueryable<TEntity> query = dbSet;
+            IQueryable<T> query = dbSet;
             return query.ToList();
         }
 
-        public TEntity GetProductById(int id)
+        public T GetById(int id)
         {
             return dbSet.Find(id);
         }
 
         /// <summary>
-        /// TODO: Needs fixing. How to implement this functionality in a generic way?
+        /// 
         /// </summary>
         /// <param name="product"></param>
-        public void SaveProduct(TEntity product)
+        public void SaveItem(T product)
         {
             if (product.ProductId == 0)
             {
@@ -47,9 +47,9 @@ namespace MbmStore.DAL
             }
         }
 
-        public TEntity DeleteProduct(int id)
+        public T DeleteItem(int id)
         {
-            TEntity product = dbSet.Find(id);
+            T product = dbSet.Find(id);
             if (product != null)
             {
                 dbSet.Remove(product);

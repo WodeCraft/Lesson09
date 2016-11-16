@@ -151,15 +151,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\NavController.cs" />
-    <Compile Include="DAL\EFBookRepository.cs" />
-    <Compile Include="DAL\EFInvoiceRepository.cs" />
-    <Compile Include="DAL\EFMovieRepository.cs" />
-    <Compile Include="DAL\EFMusicCDRepository.cs" />
-    <Compile Include="DAL\IBookRepository.cs" />
-    <Compile Include="DAL\IInvoiceRepository.cs" />
-    <Compile Include="DAL\IMovieRepository.cs" />
-    <Compile Include="DAL\IMusicCDRepository.cs" />
-    <Compile Include="DAL\IProductRepository.cs" />
+    <Compile Include="DAL\InvoiceRepository.cs" />
+    <Compile Include="DAL\IRepository.cs" />
     <Compile Include="DAL\MbmStoreContext.cs" />
     <Compile Include="DAL\MbmStoreInitializer.cs" />
     <Compile Include="DAL\ProductRepository.cs" />

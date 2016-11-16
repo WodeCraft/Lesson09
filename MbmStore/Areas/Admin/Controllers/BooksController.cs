@@ -8,12 +8,12 @@ namespace MbmStore.Areas.Admin.Controllers
 {
     public class BooksController : Controller
     {
-        private IBookRepository repo = new EFBookRepository();
+        private ProductRepository<Book> repo = new ProductRepository<Book>();
 
         // GET: Admin/Books
         public ActionResult Index()
         {
-            return View(repo.GetBookList());
+            return View(repo.GetList());
         }
 
         // GET: Admin/Books/Details/5
@@ -23,7 +23,7 @@ namespace MbmStore.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Book book = repo.GetBookById((int)id);
+            Book book = repo.GetById((int)id);
             if (book == null)
             {
                 return HttpNotFound();
@@ -48,7 +48,7 @@ namespace MbmStore.Areas.Admin.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    repo.SaveBook(book);
+                    repo.SaveItem(book);
                     return RedirectToAction("Index");
                 }
             }
@@ -68,7 +68,7 @@ namespace MbmStore.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Book book = repo.GetBookById((int)id);
+            Book book = repo.GetById((int)id);
             if (book == null)
             {
                 return HttpNotFound();
@@ -87,7 +87,7 @@ namespace MbmStore.Areas.Admin.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    repo.SaveBook(book);
+                    repo.SaveItem(book);
                     return RedirectToAction("Index");
                 }
             }
@@ -113,7 +113,7 @@ namespace MbmStore.Areas.Admin.Controllers
                 ViewBag.ErrorMessage = "Delete failed. Try again, and if the problem persists see your administrator.";
             }
 
-            Book book = repo.GetBookById((int)id);
+            Book book = repo.GetById((int)id);
             if (book == null)
             {
                 return HttpNotFound();
@@ -128,7 +128,7 @@ namespace MbmStore.Areas.Admin.Controllers
         {
             try
             {
-                Book book = repo.DeleteBook(id);
+                Book book = repo.DeleteItem(id);
             }
             catch (DataException /* dex */ )
             {

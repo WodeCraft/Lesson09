@@ -8,12 +8,12 @@ namespace MbmStore.Areas.Admin.Controllers
 {
     public class MusicController : Controller
     {
-        private EFMusicCDRepository repo = new EFMusicCDRepository();
+        private ProductRepository<MusicCD> repo = new ProductRepository<MusicCD>();
 
         // GET: Admin/Music
         public ActionResult Index()
         {
-            return View(repo.GetMusicCDList());
+            return View(repo.GetList());
         }
 
         // GET: Admin/Music/Details/5
@@ -23,7 +23,7 @@ namespace MbmStore.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MusicCD musicCD = repo.GetMusicCDById((int)id);
+            MusicCD musicCD = repo.GetById((int)id);
             if (musicCD == null)
             {
                 return HttpNotFound();
@@ -48,7 +48,7 @@ namespace MbmStore.Areas.Admin.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    repo.SaveMusicCD(musicCD);
+                    repo.SaveItem(musicCD);
                     return RedirectToAction("Index");
                 }
             }
@@ -68,7 +68,7 @@ namespace MbmStore.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MusicCD musicCD = repo.GetMusicCDById((int)id);
+            MusicCD musicCD = repo.GetById((int)id);
             if (musicCD == null)
             {
                 return HttpNotFound();
@@ -87,7 +87,7 @@ namespace MbmStore.Areas.Admin.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    repo.SaveMusicCD(musicCD);
+                    repo.SaveItem(musicCD);
                     return RedirectToAction("Index");
                 }
             }
@@ -113,7 +113,7 @@ namespace MbmStore.Areas.Admin.Controllers
                 ViewBag.ErrorMessage = "Delete failed. Try again, and if the problem persists see your administrator.";
             }
 
-            MusicCD musicCD = repo.GetMusicCDById((int)id);
+            MusicCD musicCD = repo.GetById((int)id);
             if (musicCD == null)
             {
                 return HttpNotFound();
@@ -128,7 +128,7 @@ namespace MbmStore.Areas.Admin.Controllers
         {
             try
             {
-                MusicCD musicCD = repo.DeleteMusicCD((int)id);
+                MusicCD musicCD = repo.DeleteItem((int)id);
                 //db.MusicCDs.Remove(musicCD);
                 // Alternative to the lines above. A performance improvement
                 //MusicCD MusicCDToDelete = new MusicCD() { ProductId = id };

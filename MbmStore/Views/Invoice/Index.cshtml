@@ -25,10 +25,10 @@
                 @foreach (OrderItem orderItem in invoice.OrderItems)
                 {
                     <tr>
-                        <td width="500">@orderItem.Product.Title (@orderItem.Product.ToString().Substring(15)) </td>
-                        <td style="width:50px" class="price">@orderItem.Product.Price</td>
+                        <td width="500">@orderItem.Quantity stk. @orderItem.Product.Title (@orderItem.Product.ToString().Substring(16)) </td>
+                        <td style="width:50px" class="price">@orderItem.Price</td>
                     </tr>
-                    price += orderItem.Product.Price;
+                    price += orderItem.TotalPrice;
                 }
                 <tr><td><strong>Total</strong></td><td class="price"><strong>@price</strong></td></tr>
             </table>

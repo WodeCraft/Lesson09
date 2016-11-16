@@ -8,12 +8,12 @@ namespace MbmStore.Areas.Admin.Controllers
 {
     public class MoviesController : Controller
     {
-        private EFMovieRepository repo = new EFMovieRepository();
+        private ProductRepository<Movie> repo = new ProductRepository<Movie>();
 
         // GET: Admin/Movies
         public ActionResult Index()
         {
-            return View(repo.GetMovieList());
+            return View(repo.GetList());
         }
 
         // GET: Admin/Movies/Details/5
@@ -23,7 +23,7 @@ namespace MbmStore.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movie movie = repo.GetMovieById((int)id);
+            Movie movie = repo.GetById((int)id);
             if (movie == null)
             {
                 return HttpNotFound();
@@ -48,7 +48,7 @@ namespace MbmStore.Areas.Admin.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    repo.SaveMovie(movie);
+                    repo.SaveItem(movie);
                     return RedirectToAction("Index");
                 }
             }
@@ -68,7 +68,7 @@ namespace MbmStore.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movie movie = repo.GetMovieById((int)id);
+            Movie movie = repo.GetById((int)id);
             if (movie == null)
             {
                 return HttpNotFound();
@@ -87,7 +87,7 @@ namespace MbmStore.Areas.Admin.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    repo.SaveMovie(movie);
+                    repo.SaveItem(movie);
                     return RedirectToAction("Index");
                 }
             }
@@ -113,7 +113,7 @@ namespace MbmStore.Areas.Admin.Controllers
                 ViewBag.ErrorMessage = "Delete failed. Try again, and if the problem persists see your administrator.";
             }
 
-            Movie movie = repo.GetMovieById((int)id);
+            Movie movie = repo.GetById((int)id);
             if (movie == null)
             {
                 return HttpNotFound();
@@ -128,7 +128,7 @@ namespace MbmStore.Areas.Admin.Controllers
         {
             try
             {
-                Movie movie = repo.GetMovieById((int)id);
+                Movie movie = repo.GetById((int)id);
             }
             catch (DataException /* dex */ )
             {
